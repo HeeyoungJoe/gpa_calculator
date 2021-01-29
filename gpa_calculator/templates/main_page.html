@@ -1,27 +1,43 @@
 {% extends 'base.html' %}
+{% block title %}-main{%endblock%}
 {% block content %}
 <h1>Main Page</h1>
 
 <div class="row">
-    <div class="column">
-        <form action="" method="post">
+    <div class="column" style="background-color:#FFB695;">
+        <form action="{% url 'register'%}" method="POST">
             {{form.as_p}}
             {% csrf_token %}
-            <a class="btn btn-primary" href="{% url 'list'%}">Button-Text</a>
+            <button type="submit">Add</button>
             <input type="submit" class="btn btn-danger" value="Calculate">
         </form>
     </div>
-    <div class="column">
-        {%for course in object_list%}
-        <tr>
-            <td>{{forloop.counter}}</td>
-            <td>{{course.credit}}</td>
-            <td>{{course.grade}}</td>
-            <td>{{course.course_name}}</td>
-            <td><a href="#" class="btn btn-success btn-sm">Modify</a></td>
-            <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>
-        </tr>
-        {% endfor %}
+    <div class="column" style="background-color:#96D1CD;">
+        <table>
+            <thead>
+                <tr>
+                    <td>Index</td>
+                    <td>Credit</td>
+                    <td>Grade</td>
+                    <td>Course Name</td>
+                    <td>_</td>
+                    <td>_</td>
+                </tr>
+            </thead>
+            <tbody>
+                {%for course in object_list%}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{course.credit}}</td>
+                    <td>{{course.grade}}</td>
+                    <td>{{course.course_name}}</td>
+                    <td>{{course.course_type}}</td>
+                    <td><a href="#" class="btn btn-success btn-sm">Modify</a></td>
+                    <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 
