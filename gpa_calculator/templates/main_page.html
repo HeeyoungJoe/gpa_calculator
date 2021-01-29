@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Main Page</h1>
+
+<div class="row">
+    <div class="column">
+        <form action="" method="post">
+            {{form.as_p}}
+            {% csrf_token %}
+            <a class="btn btn-primary" href="{% url 'list'%}">Button-Text</a>
+            <input type="submit" class="btn btn-danger" value="Calculate">
+        </form>
+    </div>
+    <div class="column">
+        {%for course in object_list%}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{course.credit}}</td>
+            <td>{{course.grade}}</td>
+            <td>{{course.course_name}}</td>
+            <td><a href="#" class="btn btn-success btn-sm">Modify</a></td>
+            <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
