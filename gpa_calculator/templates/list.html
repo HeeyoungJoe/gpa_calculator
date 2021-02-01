@@ -1,4 +1,36 @@
 {%extends 'base.html'%}
 {%block title %}-list{%endblock%}
 {%block content%}
+<div class="container">
+    <div class="container-fluid">
+        <div class="column" style="background-color:#96D1CD;">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Index</td>
+                            <td>Credit</td>
+                            <td>Grade</td>
+                            <td>Course Name</td>
+                            <td></td>
+                            <td>_</td>
+                            <td>_</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for course in object_list%}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{course.credits}}</td>
+                            <td>{{course.grade}}</td>
+                            <td>{{course.course_name}}</td>
+                            <td>{{course.course_type}}</td>
+                            <td><a href="#" class="btn btn-success btn-sm">Modify</a></td>
+                            <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
 {%endblock%}

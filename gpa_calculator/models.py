@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Course(models.Model):
     #choices (what is saved, human readable name)pytho
     TYPE={
@@ -19,4 +18,4 @@ class Course(models.Model):
     grade=models.FloatField()
     credits=models.FloatField()
     standard=models.FloatField(choices=STANDARD,null=True)
-    desired_standard=models.FloatField(choices=STANDARD,null=True)
+    #desired_standard = models.FloatField(choices=STANDARD, null=True)

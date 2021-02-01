@@ -3,25 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>ZINI{%block title %}{%endblock %}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brans" href="/">ZINI</a>
+    <a class="navbar-brand" href="/">ZINI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav justify-content-end">
             <li class="nav-item active">
-                <a class="nav-link btn btn-outline-success" href="">My Page</a>
+                <a class="nav-link btn btn-outline-success" href="{%url 'register' %}">My Page</a>
             </li>
         </ul>
     </div>
 </nav>
-{% block content%}
-{% endblock %}
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="navigator">
+            <ul>
+                <li><a href="{% url 'register' %}">Main</a></li>
+                <li><a href="{% url 'list' %}">Course List</a></li>
+                <li><a href="{% url 'result' %}">Calculated Result</a></li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-md-8 panel panel-default">
+            {% block content%}
+            {% endblock %}
+        </div>
+    </div>
+</div>
 </body>
+
 </html>
