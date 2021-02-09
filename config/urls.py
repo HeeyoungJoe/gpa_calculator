@@ -20,4 +20,5 @@ import gpa_calculator
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('gpa_calculator.urls')),
+    path('overall/',include('archive.urls'))
 ]

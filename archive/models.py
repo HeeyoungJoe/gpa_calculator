@@ -15,6 +15,8 @@ class Archive(models.Model):
         ('2020_3','2020 FALL'),
         ('2020_4','2020 WINTER')
     }
-    desired_standard= models.FloatField(choices=STANDARD, null=True)
+    desiredStandard= models.FloatField(choices=STANDARD, null=True)
     semester=models.CharField(max_length=200,choices=SEMESTER,null=True)
-    total_avg,major_avg,minor_avg=calculate(desired_standard)
+    total_avg=models.FloatField(default=0)
+    major_avg=models.FloatField(default=0)
+    minor_avg=models.FloatField(default=0)

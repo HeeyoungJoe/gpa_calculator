@@ -1,3 +1,65 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<div class="container">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="column" style="background-color:#FFB695;">
+                <form action="{% url 'result'%}" method="POST">
+                    {{form.as_p}}
+                    {% csrf_token %}
+                    <button type="submit">Save</button>
+                    <button onclick="myFunction()">Try it</button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+fetch('/testapi')
+.then(response => response.json())
+.then(resp => {
+   console.log(resp); //output=> {'totavg':Archive.total_avg,'majavg':Archive.major_avg,'minavg':Archive.minor_avg,'desiredStandard':Archive.desiredStandard}
+   var totavg=resp.totavg;
+   var majavg=resp.majavg;
+   var minavg=resp.minavg;
+   var desiredStandard=resp.desiredStandard;
+  document.getElementById('list_calc').innerHTML= ``${totavg}${majavg}${minavg}`;
+  });
+</script>
+<div id="list_calc">
+<table>
+    <tr>Your results</tr>
+    <thead>
+        <tr>
+            <td>standard: {{archive.get_desiredStandard_display}}</td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td>average</td>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+
+                <td>Total</td>
+                <td>{{totavg}}</td>
+            </tr>
+            <tr>
+
+                <td>Major</td>
+                <td>{{majavg}}</td>
+            </tr>
+            <tr>
+
+                <td>Minor</td>
+                <td>{{minavg}}</td>
+            </tr>
+
+    </tbody>
+</table>
+</div>
 {% endblock %}

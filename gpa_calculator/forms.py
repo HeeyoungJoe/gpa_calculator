@@ -10,4 +10,4 @@ class CourseInputForm(forms.ModelForm):
 class Desired_standard(forms.ModelForm):
     class Meta:
         model=Archive
-        fields=('desired_standard',)
+        fields=('desiredStandard',)
